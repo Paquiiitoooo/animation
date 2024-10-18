@@ -1,0 +1,203 @@
+/* CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-y: hidden;
+}
+
+html, body {
+    height: 100%;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.content-wrapper {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin: 10px;
+}
+
+header {
+    text-align: center;
+    padding: 10px;
+    color: #0C4C4E;
+    background-color: #5EB1BF;
+}
+
+section {
+    border-radius: 10px;
+    border: 3px solid #042A2B;
+    background-color: #F4E04D;
+    width: 20%;
+    height: 200px;
+    margin-bottom: 10px;
+}
+
+#section_1, #section_2, #section_3,  #section_4 {
+    display: grid;
+    place-items: center;
+}
+
+#carre {
+    border: 2px solid #000;
+    background-color: #FCFCFC;
+    width: 80px;
+    height: 80px;
+    animation: carre 3s infinite linear;
+}
+
+@keyframes carre {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+#bouncing_ball {
+    border: 2px solid #000;
+    background-color: #FCFCFC;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    animation: bounce 2s ease-out infinite;
+    margin-top: 100px; 
+}
+
+@keyframes bounce {
+    0% { transform: translateY(0); }
+    20% { transform: translateY(-100px); } /* Premier rebond */
+    40% { transform: translateY(0); }
+    55% { transform: translateY(-50px); } /* Deuxième rebond */
+    70% { transform: translateY(0); }
+    80% { transform: translateY(-20px); } /* Troisième rebond */
+    90% { transform: translateY(0); }
+    100% { transform: translateY(0); }
+}
+
+#loader {
+    display: flex;
+    align-items: flex-end; /* Aligne les cercles en bas */
+}
+
+.rec_loader {
+    width: 20px;           /* Diamètre des cercles */
+    height: 20px;          /* Diamètre des cercles */
+    border-radius: 50%;    /* Rend les éléments circulaires */
+    background-color: #5EB1BF;
+    margin-right: 5px;
+    margin-bottom: 10px;
+    animation: load 1s ease-in-out infinite; /* Animation de base */
+}
+
+#load_1 {
+    animation-delay: 0s; /* Pas de délai pour le premier point */
+}
+#load_2 {
+    animation-delay: 0.2s; /* Délai pour le deuxième point */
+}
+#load_3 {
+    animation-delay: 0.4s; /* Délai pour le troisième point */
+}
+
+@keyframes load {
+    0% { transform: scale(1); background-color: #FCFCFC; }
+    50% { transform: scale(1.1); background-color: #54F2F2; } /* Agrandit le point */
+    100% { transform: scale(1); background-color: #5EB1BF; }
+    0% { transform: translateY(0); background-color: #FCFCFC; }
+    50% { transform: translateY(5px); background-color: #54F2F2; } /* Agrandit le point */
+    100% { transform: translateY(0); background-color: #5EB1BF; }
+}
+
+/* Style de base pour les petits carrés */
+.square-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.square {
+    position: absolute;
+    width: 15px; 
+    height: 15px;
+    background-color: #000;
+    animation: moveSquares 12s linear infinite, rotateSquare 2s linear infinite, colorChange 6s ease-in-out infinite;
+}
+
+/* Délai pour chaque carré afin qu'ils se suivent en file indienne */
+.square:nth-child(1) { animation-delay: 0s; }
+.square:nth-child(2) { animation-delay: 1s; }
+.square:nth-child(3) { animation-delay: 2s; }
+.square:nth-child(4) { animation-delay: 3s; }
+.square:nth-child(5) { animation-delay: 4s; }
+.square:nth-child(6) { animation-delay: 5s; }
+
+/* Animation de rotation pour que les carrés tournent sur eux-mêmes */
+@keyframes rotateSquare {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Animation de changement de couleur */
+@keyframes colorChange {
+    0% { background-color: #000; }
+    25% { background-color: #FF0000; }
+    50% { background-color: #00FF00; }
+    75% { background-color: #0000FF; }
+    100% { background-color: #000; }
+}
+
+/* Animation continue des carrés sur le contour du rectangle */
+@keyframes moveSquares {
+    0% {
+        top: 0;
+        left: 0;
+    }
+    25% {
+        top: 0;
+        left: calc(100% - 17px); /* Ajuster pour le côté droit avec la taille des carrés + marge */
+        animation-timing-function: ease-in;
+    }
+    50% {
+        top: calc(100% - 17px); /* Ajuster pour le bas avec la taille des carrés + marge */
+        left: calc(100% - 17px);
+        animation-timing-function: ease-out;
+    }
+    75% {
+        top: calc(100% - 17px);
+        left: 0; /* Retour rapide à gauche */
+        animation-timing-function: ease-in;
+    }
+    100% {
+        top: 0;
+        left: 0; /* Remonte lentement */
+        animation-timing-function: ease-out;
+    }
+}
+
+/* Ajustement pour éviter que les carrés reviennent immédiatement à leur point de départ */
+.square:nth-child(1) { animation-delay: 0s; }
+.square:nth-child(2) { animation-delay: 2s; }
+.square:nth-child(3) { animation-delay: 4s; }
+.square:nth-child(4) { animation-delay: 6s; }
+.square:nth-child(5) { animation-delay: 8s; }
+.square:nth-child(6) { animation-delay: 10s; }
+
+
+footer {
+    background-color: #5EB1BF;
+    color: #0C4C4E;
+    text-align: center;
+    padding: 10px;
+    position: sticky;
+    bottom: 0;
+}
