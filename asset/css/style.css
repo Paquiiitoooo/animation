@@ -130,6 +130,7 @@ section {
     position: absolute;
     width: 15px; 
     height: 15px;
+    border-radius: 4px;
     text-align: center;
     background-color: #F4E04D;
     animation: moveSquares 12s linear infinite, rotateSquare 2s linear infinite, colorChange 6s ease-in-out infinite;
