@@ -130,7 +130,8 @@ section {
     position: absolute;
     width: 15px; 
     height: 15px;
-    background-color: #000;
+    text-align: center;
+    background-color: #F4E04D;
     animation: moveSquares 12s linear infinite, rotateSquare 2s linear infinite, colorChange 6s ease-in-out infinite;
 }
 
@@ -207,14 +208,19 @@ footer {
     width:250px;
     height:75px;
     background-color: #5EB1BF;
-    border-radius: 15px;
+    border-radius: 10px;
+    border-color:#000;
     color: #0C4C4E ;
 }
 #btn:hover{
-    transition:2s;
-    height: 700px;
+    transition:1s;
+    height: 575px;
+    border-radius: 10px;
+    border-color: #000;
 }
 #btn:not(:hover){
     transition:2s;
     height:75px;
+    border-radius: 10px;
+    border-color: #000;
 }
